@@ -14,7 +14,7 @@ defmodule KafkaXElixir.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :kafka_ex],
+      extra_applications: [:logger, :kafka_ex, :kaffe],
       mod: {KafkaXElixir.Application, []}
     ]
   end
@@ -36,7 +36,10 @@ defmodule KafkaXElixir.MixProject do
       {:phoenix_ecto, "~> 4.5"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:appsignal_phoenix, "~> 2.6"},
+      {:kaffe, "~> 1.27"},
+      {:brod, "~> 4.2", override: true}
     ]
   end
 end

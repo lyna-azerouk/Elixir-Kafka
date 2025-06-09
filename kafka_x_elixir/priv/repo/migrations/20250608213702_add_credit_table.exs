@@ -3,15 +3,10 @@ defmodule KafkaXElixir.Repo.Migrations.AddCreditTable do
 
   def change do
     create table(:credits) do
-      add :amount, :decimal
+      add :amount, :string
       add :currency, :string
       add :description, :string
-      add :account_id, :integer
-
-      timestamps()
+      add :account_id, :string
     end
-
-    # create index(:credits, [:account_id])
-    # create unique_index(:credits, [:account_id, :currency], name: :unique_account_currency)
   end
 end

@@ -3,12 +3,10 @@ defmodule KafkaXElixir.Schema.Credit do
   import Ecto.Changeset
 
   schema "credits" do
-    field(:amount, :decimal)
+    field(:amount, :string)
     field(:currency, :string)
     field(:description, :string)
-    field(:account_id, :integer)
-
-    timestamps()
+    field(:account_id, :string)
   end
 
   @doc false
@@ -16,6 +14,5 @@ defmodule KafkaXElixir.Schema.Credit do
     credit
     |> cast(attrs, [:amount, :currency, :description, :account_id])
     |> validate_required([:amount, :currency, :account_id])
-    |> validate_number(:amount, greater_than: 0)
   end
 end

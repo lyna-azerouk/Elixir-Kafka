@@ -1,8 +1,15 @@
-defmodule KafkaXElixir.Services.BankAccount.Consumer do
+defmodule KafkaXElixir.Services.BankAccounts.Pipeline do
+  @doc """
+  Consume events from the Kafka topic `bank_account_events`
+
+  messages are stored in database
+  """
   use Broadway
 
   require Logger
   alias Broadway.Message
+  alias KafkaXElixir.Schema.Credit
+  alias KafkaXElixir.Repo
 
   def start_link(_opts) do
     IO.puts("Starting Broadway Consumer...")
@@ -17,7 +24,7 @@ defmodule KafkaXElixir.Services.BankAccount.Consumer do
              group_id: "bank_account_group",
              topics: ["bank_account_events"]
            ]},
-        concurrency: 1
+        concurrency: 2
       ],
       processors: [
         default: [
@@ -27,7 +34,8 @@ defmodule KafkaXElixir.Services.BankAccount.Consumer do
       batchers: [
         default: [],
         credits: [
-          batch_size: 5
+          batch_size: 5,
+          batch_timeout: 5_000
         ],
         debits: [
           batch_size: 5
@@ -84,18 +92,38 @@ defmodule KafkaXElixir.Services.BankAccount.Consumer do
   @impl true
   def handle_batch(batcher, messages, %Broadway.BatchInfo{batcher: :credits}, _context) do
     IO.inspect(messages, label: "Handling batch of messages")
-    IO.puts("Batcher: #{batcher}")
-    IO.puts("Handling batch...")
-    ## insert all credits into the database
-    messages
+    batch_insert_all(Credit, messages)
   end
 
   def handle_batch(batcher, messages, %Broadway.BatchInfo{batcher: :debits}, _context) do
-    IO.inspect(messages, label: "Handling batch of messages")
-    IO.puts("Batcher: #{batcher}")
-    IO.puts("Handling batch...")
-    list = messages |> Enum.map(fn e -> e.data end)
-    IO.inspect(list, label: "Got batch")
     messages
+  end
+
+  defp batch_insert_all(Credit, messages, opts \\ []) do
+    entries =
+      convert_baches_to_entries(Credit, messages)
+
+    Repo.insert_all(Credit, entries, opts)
+    |> case do
+      {n, _} ->
+        Logger.info("Inserted #{n} credits into the database")
+        messages
+
+      _ ->
+        messages
+    end
+  end
+
+  defp convert_baches_to_entries(schema, messages) do
+    Enum.map(messages, fn %Message{data: data} ->
+      case data do
+        {:ok, %{"credit" => credit_attrs}} ->
+          %Ecto.Changeset{changes: changes} = schema |> struct() |> schema.changeset(credit_attrs)
+          changes
+
+        _ ->
+          Logger.error("Failed to decode message data: #{inspect(data)}")
+      end
+    end)
   end
 end

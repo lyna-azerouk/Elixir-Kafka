@@ -7,10 +7,13 @@ defmodule KafkaXElixir.Application do
 
   @impl true
   def start(_type, _args) do
+    import Supervisor.Spec
+
     children = [
       # Starts a worker by calling: KafkaXElixir.Worker.start_link(arg)
       # {TelemetryMetricsPrometheus, [metrics: KafkaXElixir.Metrics.metrics()]},
-      {KafkaXElixir.Services.BankAccount.Consumer, []}
+      {KafkaXElixir.Services.BankAccounts.Pipeline, []},
+      {KafkaXElixir.Repo, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
