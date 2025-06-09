@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build",
+  "command": "/usr/bin/cc -Dcrc32cer_nif_EXPORTS -I/opt/homebrew/Cellar/erlang/28.0/lib/erlang/usr/include -I/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/crc32c/include -O2 -g -DNDEBUG -arch arm64 -fPIC -o CMakeFiles/crc32cer_nif.dir/c_src/crc32c_nif.c.o -c /Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_src/crc32c_nif.c",
+  "file": "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_src/crc32c_nif.c",
+  "output": "CMakeFiles/crc32cer_nif.dir/c_src/crc32c_nif.c.o"
+}
+]

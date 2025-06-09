@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/CMakeFiles/google-crc32c"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/CMakeFiles/google-crc32c.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/CMakeFiles/google-crc32c-complete.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-build.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-configure.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-download.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-install.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-mkdir.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-patch.rule"
+		},
+		{
+			"file" : "/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-stamp/google-crc32c-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"google-crc32c"
+		],
+		"name" : "google-crc32c"
+	}
+}
