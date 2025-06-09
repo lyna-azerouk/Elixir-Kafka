@@ -1,9 +1,0 @@
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/crc32c_arm64.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/crc32c_sse42.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/crc32c.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/edit_cache.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/rebuild_cache.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/list_install_components.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/install.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/install/local.dir
-/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/external/src/google-crc32c-build/CMakeFiles/install/strip.dir

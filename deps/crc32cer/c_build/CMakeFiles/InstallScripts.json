@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/c_build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

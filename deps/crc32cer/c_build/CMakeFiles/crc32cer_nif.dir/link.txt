@@ -1,1 +1,0 @@
-/usr/bin/cc -O2 -g -DNDEBUG -arch arm64 -dynamiclib -Wl,-headerpad_max_install_names -o /Users/smart-it/linaazerouk/Elixir-Kafka/kafka_x_elixir/deps/crc32cer/priv/libcrc32cer_nif.so -install_name @rpath/libcrc32cer_nif.so CMakeFiles/crc32cer_nif.dir/c_src/crc32c_nif.c.o  external/src/google-crc32c-build/libcrc32c.a -lc++ -Wl,-undefined,dynamic_lookup
