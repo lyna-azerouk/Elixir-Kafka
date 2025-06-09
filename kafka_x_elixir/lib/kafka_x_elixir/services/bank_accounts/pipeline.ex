@@ -9,6 +9,7 @@ defmodule KafkaXElixir.Services.BankAccounts.Pipeline do
   require Logger
   alias Broadway.Message
   alias KafkaXElixir.Schema.Credit
+  alias KafkaXElixir.Schema.Debit
   alias KafkaXElixir.Repo
 
   def start_link(_opts) do
@@ -46,8 +47,6 @@ defmodule KafkaXElixir.Services.BankAccounts.Pipeline do
 
   @impl true
   def prepare_messages(messages, _context) do
-    IO.puts("Preparing messages...")
-
     Enum.map(messages, fn message ->
       message
       |> Message.update_data(fn data ->
@@ -91,19 +90,18 @@ defmodule KafkaXElixir.Services.BankAccounts.Pipeline do
 
   @impl true
   def handle_batch(batcher, messages, %Broadway.BatchInfo{batcher: :credits}, _context) do
-    IO.inspect(messages, label: "Handling batch of messages")
     batch_insert_all(Credit, messages)
   end
 
   def handle_batch(batcher, messages, %Broadway.BatchInfo{batcher: :debits}, _context) do
-    messages
+    batch_insert_all(Debit, messages)
   end
 
-  defp batch_insert_all(Credit, messages, opts \\ []) do
+  defp batch_insert_all(schema, messages, opts \\ []) do
     entries =
-      convert_baches_to_entries(Credit, messages)
+      convert_baches_to_entries(schema, messages)
 
-    Repo.insert_all(Credit, entries, opts)
+    Repo.insert_all(schema, entries, opts)
     |> case do
       {n, _} ->
         Logger.info("Inserted #{n} credits into the database")

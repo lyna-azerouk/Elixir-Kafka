@@ -7,7 +7,7 @@ defmodule KafkaXElixir.Services.BankAccount.EventProducer do
   @batch_size 1_000
   def send_many(n) when is_integer(n) and n > 0 do
     1..n
-    |> Stream.map(&build_message/1)
+    |> Stream.map(fn _ -> build_message() end)
     |> Stream.chunk_every(@batch_size)
     |> Stream.each(fn batch ->
       :ok = Kaffe.Producer.produce_sync(@topic, batch)
@@ -15,13 +15,40 @@ defmodule KafkaXElixir.Services.BankAccount.EventProducer do
     |> Stream.run()
   end
 
-  defp build_message(i) do
+  defp build_message() do
+    case :rand.uniform(2) do
+      1 -> build_debit_event()
+      2 -> build_credit_event()
+    end
+  end
+
+  defp build_debit_event() do
     event = %{
-      event_type: "credit",
+      event_type: "debit",
       credit: %{
         amount: "50",
         currency: "euros",
-        account_id: to_string(i)
+        reason: "12345",
+        payment_method: "12345",
+        credit_id: "12345"
+      }
+    }
+
+    %{
+      key: event.credit.credit_id,
+      value: Jason.encode!(event)
+    }
+  end
+
+
+  defp build_credit_event() do
+    event = %{
+      event_type: "credit",
+      credit: %{
+        amount: "100",
+        currency: "euros",
+        description: "12345",
+        account_id: "12345"
       }
     }
 

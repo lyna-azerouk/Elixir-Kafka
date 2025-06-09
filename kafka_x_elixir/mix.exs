@@ -39,7 +39,8 @@ defmodule KafkaXElixir.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:appsignal_phoenix, "~> 2.6"},
       {:kaffe, "~> 1.27"},
-      {:brod, "~> 4.2", override: true}
+      {:brod, "~> 4.2", override: true},
+      {:faker, "~> 0.18"}
     ]
   end
 end
